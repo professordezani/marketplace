@@ -1,5 +1,4 @@
-using Marketplace.Models;
-using Marketplace.Data;
+using Marketplace.Models.Entidades;
 using System.Linq;
 using System.Collections.Generic;
 

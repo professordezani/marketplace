@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Marketplace.Models;
+using Marketplace.Models.Entidades;
 
 namespace Marketplace.Data {
     public class DataContext : DbContext {
@@ -9,9 +9,13 @@ namespace Marketplace.Data {
 
        public DbSet<Categoria> Categorias { get; set; }
 
+       public DbSet<Empresa> Empresas { get; set; }
+
+       public DbSet<Produto> Produtos { get; set; }
+
        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
-          modelBuilder.Entity<Categoria>().Property(p => p.Descricao).HasMaxLength(50).IsRequired();
+            modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();     
        }
     }
 }
