@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Marketplace.Models.Entidades {
@@ -13,5 +14,7 @@ namespace Marketplace.Models.Entidades {
         public string Cnpj { get; set; }
         [Required]
         public Categoria Categoria { get; set; }
+
+        public List<Funcionario> Funcionarios {get; set;}
    }
 } 
