@@ -7,8 +7,8 @@ namespace Marketplace.Models.Entidades
        [Required]
        [MaxLength(9)]
        [MinLength(9)]
-       public string cpf { get; set; }
-       public string endereco { get; set; }
+       public string Cpf { get; set; }
+       public string Endereco { get; set; }
 
    }
 }

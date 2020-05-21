@@ -5,10 +5,10 @@ namespace Marketplace.Models.Entidades
    public class Usuario : EntidadeBase 
    {
        [Required]
-       public string nome { get; set; }       
+       public string Nome { get; set; }       
        [Required]
-       public string email { get; set; }
+       public string Email { get; set; }
        [Required]
-       public string senha { get; set; }
+       public string Senha { get; set; }
    }
 }
