@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Controllers
+namespace Marketplace.Controllers.Empresa
 {
     public class FuncionarioController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Funcionários";
+            return View("~/Views/Empresa/Funcionario/Index.cshtml");
         }
     }
 }
