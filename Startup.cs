@@ -33,6 +33,8 @@ namespace Marketplace
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseStaticFiles();
 
             app.UseRouting();
 

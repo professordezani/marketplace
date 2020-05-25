@@ -1,0 +1,11 @@
+.toolbar > a {
+    margin: 10px;    
+}
+
+.checkboxMargin {
+    margin-left: 15px;
+}
+
+.checkboxPosition {
+    margin-left: 2px;
+}

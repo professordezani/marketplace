@@ -1,0 +1,33 @@
+@model Produto
+@{
+  Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+}
+<div class="container">
+  <form asp-controller="Produto" asp-action="Save" method="post">
+        <h1>Produto</h1>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="imagem">Imagem</label>
+                <input type="file" class="form-control-file" id="imagem" asp-for="Imagem">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="valor">Valor</label>
+                <input type="number" class="form-control" id="valor" asp-for="Valor">
+            </div>     
+            <div class="form-group col-md-2 checkboxMargin">
+                <label>Ativo</label>
+                <br />
+                <input class="form-check-input checkboxPosition" type="checkbox" value="" id="ativo" asp-for="Ativo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control" id="titulo" asp-for="Titulo">
+        </div> 
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea class="form-control" id="descricao" rows="8" style="resize: none" asp-for="Descricao"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>

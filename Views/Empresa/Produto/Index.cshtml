@@ -1,31 +1,28 @@
 @{
   Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
 }
-
-<table class="table table-striped">
-<thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Handle</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td>Larry</td>
-    <td>the Bird</td>
-  </tr>
-</tbody>
-</table>
+<div class="container-fluid">
+  <nav class="nav justify-content-end toolbar">
+   <a class="btn btn-primary" href="#" role="button">Novo</a>
+  </nav>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Ativo</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 70%">Mark</td>
+          <td style="width: 10%">Mark</td>
+          <td style="width: 10%">Otto</td>
+          <td style="width: 7.5%"><a class="btn btn-success" href="/Produto/Save" role="button">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+</div>
