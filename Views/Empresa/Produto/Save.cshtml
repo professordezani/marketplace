@@ -3,21 +3,21 @@
   Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
 }
 <div class="container">
-  <form asp-controller="Produto" asp-action="Save" method="post">
+  <form asp-controller="Produto" asp-action="Save" method="post" enctype="multipart/form-data">
         <h1>Produto</h1>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="imagem">Imagem</label>
-                <input type="file" class="form-control-file" id="imagem" asp-for="Imagem">
+                <input type="file" name="files" class="form-control-file" id="imagem">
             </div>
             <div class="form-group col-md-2">
                 <label for="valor">Valor</label>
                 <input type="number" class="form-control" id="valor" asp-for="Valor">
             </div>     
             <div class="form-group col-md-2 checkboxMargin">
-                <label>Ativo</label>
+                <label>Indisponível</label>
                 <br />
-                <input class="form-check-input checkboxPosition" type="checkbox" value="" id="ativo" asp-for="Ativo">
+                <input class="form-check-input checkboxPosition" type="checkbox" value="" id="ativo" asp-for="Indisponivel">
             </div>
         </div>
         <div class="form-group">

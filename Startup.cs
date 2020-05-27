@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Marketplace.Data;
 using Microsoft.EntityFrameworkCore;
+using Marketplace.Repository;
+using Marketplace.Models.Repositories;
 
 namespace Marketplace
 {
@@ -23,6 +25,7 @@ namespace Marketplace
         {
             var connectionString = Configuration.GetConnectionString("ConnectionString");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddControllersWithViews();
         }
            

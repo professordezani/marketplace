@@ -1,9 +1,10 @@
+@model List<Produto>
 @{
   Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
 }
 <div class="container-fluid">
   <nav class="nav justify-content-end toolbar">
-   <a class="btn btn-primary" href="#" role="button">Novo</a>
+   <a class="btn btn-primary" href="Produto/Save" role="button">Novo</a>
   </nav>
   <div class="row">
     <table class="table table-striped">
@@ -11,17 +12,22 @@
         <tr>
           <th scope="col">Título</th>
           <th scope="col">Valor</th>
-          <th scope="col">Ativo</th>
+          <th scope="col">Indisponível</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td style="width: 70%">Mark</td>
-          <td style="width: 10%">Mark</td>
-          <td style="width: 10%">Otto</td>
-          <td style="width: 7.5%"><a class="btn btn-success" href="/Produto/Save" role="button">Editar</a></td>
-        </tr>
+        @foreach (var produto in Model)
+        {
+            <tr>
+              <td style="width: 70%">@produto.Titulo</td>
+              <td style="width: 10%">@produto.Valor</td>
+              <td style="width: 10%">
+                 <input type="checkbox" checked="@produto.Indisponivel">
+              </td>
+              <td style="width: 7.5%"><a class="btn btn-success" href="/Produto/Save?id=@produto.Id" role="button">Editar</a></td>
+            </tr>
+        }
       </tbody>
     </table>
   </div> 
