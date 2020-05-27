@@ -13,7 +13,7 @@ namespace Marketplace.Controllers.Empresa
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return View("~/Views/Cliente/Create.cshtml");
         }
 
         [HttpPost]
