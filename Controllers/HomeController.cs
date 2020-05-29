@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Marketplace.Controllers
 {
-    public class UsuarioController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {
