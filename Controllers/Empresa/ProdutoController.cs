@@ -34,6 +34,9 @@ namespace Marketplace.Controllers.Empresa {
 
         [HttpPost]
         public IActionResult Save(Produto produto, List<IFormFile> files){
+            if(!ModelState.IsValid) {
+               return View("~/Views/Empresa/Produto/Save.cshtml", produto);
+            }            
             foreach (var file in files)
             {
                if (file.Length > 0)
@@ -45,7 +48,13 @@ namespace Marketplace.Controllers.Empresa {
                   }
                }
             }
-            _produtoRepository.Create(produto);
+            
+            if(produto.Id == Guid.Empty){
+              _produtoRepository.Create(produto);
+            } else{
+              _produtoRepository.Update(produto);
+            }
+
             return RedirectToAction("Index");
         }
     }

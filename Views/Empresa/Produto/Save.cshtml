@@ -5,6 +5,7 @@
 <div class="container">
   <form asp-controller="Produto" asp-action="Save" method="post" enctype="multipart/form-data">
         <h1>Produto</h1>
+        <input type="hidden" asp-for="Id" />
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="imagem">Imagem</label>
@@ -12,21 +13,24 @@
             </div>
             <div class="form-group col-md-2">
                 <label for="valor">Valor</label>
-                <input type="number" class="form-control" id="valor" asp-for="Valor">
+                <input type="text" class="form-control" id="valor" asp-for="Valor" >
+                <span asp-validation-for="Valor" class="text-danger"></span>
             </div>     
             <div class="form-group col-md-2 checkboxMargin">
                 <label>Indisponível</label>
                 <br />
-                <input class="form-check-input checkboxPosition" type="checkbox" value="" id="ativo" asp-for="Indisponivel">
+                <input class="form-check-input checkboxPosition" type="checkbox" value="true" id="indisponivel" asp-for="Indisponivel">
             </div>
         </div>
         <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" asp-for="Titulo">
+            <span asp-validation-for="Titulo" class="text-danger"></span>
         </div> 
         <div class="form-group">
             <label for="descricao">Descrição</label>
             <textarea class="form-control" id="descricao" rows="8" style="resize: none" asp-for="Descricao"></textarea>
+            <span asp-validation-for="Descricao" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-success">Salvar</button>
     </form>

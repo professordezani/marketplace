@@ -8,5 +8,6 @@ namespace Marketplace.Models.Repositories{
         void Create(Produto produto);
         List<Produto> Read();
         Produto Read(Guid id);
+        void Update(Produto produto);
     }
 }

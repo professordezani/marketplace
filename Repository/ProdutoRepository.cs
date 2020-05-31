@@ -19,11 +19,16 @@ namespace Marketplace.Repository {
         }
 
         public List<Produto> Read(){
-            return _dataContext.Produtos.ToList();
+            return _dataContext.Produtos.OrderBy(x => x.Titulo).ToList();
         }
 
         public Produto Read(Guid id){
             return _dataContext.Produtos.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public void Update(Produto produto){
+            _dataContext.Produtos.Update(produto);
+            _dataContext.SaveChanges();
         }
     }
 }

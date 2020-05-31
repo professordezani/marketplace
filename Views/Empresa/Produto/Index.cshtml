@@ -23,7 +23,7 @@
               <td style="width: 70%">@produto.Titulo</td>
               <td style="width: 10%">@produto.Valor</td>
               <td style="width: 10%">
-                 <input type="checkbox" checked="@produto.Indisponivel">
+                 <input type="checkbox" checked="@produto.Indisponivel" onclick="return false">
               </td>
               <td style="width: 7.5%"><a class="btn btn-success" href="/Produto/Save?id=@produto.Id" role="button">Editar</a></td>
             </tr>
