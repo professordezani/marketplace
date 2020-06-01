@@ -9,3 +9,15 @@
 .checkboxPosition {
     margin-left: 2px;
 }
+
+a {
+    color: black; 
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color: black; 
+     text-decoration:none; 
+     cursor: pointer;  
+}

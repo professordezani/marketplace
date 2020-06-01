@@ -1,6 +1,28 @@
+@model HomeView;
 @{
   Layout = "~/Views/Shared/LayoutUsuario.cshtml";
 }
-
+@*
 <a href="/Usuario/Login/">Entrar</a>
-<a href="/Usuario/Create/">Nova Conta</a>
+<a href="/Usuario/Create/">Nova Conta</a> *@
+<div class="container-fluid">
+  @foreach (var produtoGroup in Model.ProdutosGroup)
+  {
+    <div class="row" style="margin-top: 10px;">
+        @foreach (var produto in produtoGroup.Produtos)
+        {
+          <div class="col-md-2">  
+            <a href="">
+              <div class="card">
+                <img class="card-img-top" src="@(produto.Imagem != null ? "data:image;base64," + Convert.ToBase64String(produto.Imagem) : "Images/NoImage.jpg")" width="150" height="150">             
+                <div class="card-body">
+                  <h5 class="card-title">@produto.Titulo</h5>
+                  <p class="card-text">R$ @produto.Valor</p>
+                </div>
+              </div>   
+            </a>
+          </div>   
+        } 
+    </div>  
+  }
+</div>
