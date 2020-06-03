@@ -13,12 +13,11 @@ namespace Marketplace.Data {
 
        public DbSet<Produto> Produtos { get; set; }
        public DbSet<Usuario> Usuarios { get; set; }
-       public DbSet<Cliente> Clientes { get; set; }
-       public DbSet<Funcionario> Funcionarios { get; set; }
 
        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
             modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();     
+            modelBuilder.Entity<Usuario>().ToTable("Usuario");
        }
     }
 }

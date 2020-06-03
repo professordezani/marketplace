@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Marketplace.Models.Entidades 
 {
-   public class Usuario : EntidadeBase 
+   public abstract class Usuario : EntidadeBase 
    {
        [Required]
        public string Nome { get; set; }       

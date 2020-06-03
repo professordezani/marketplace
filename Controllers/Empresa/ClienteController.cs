@@ -11,6 +11,19 @@ namespace Marketplace.Controllers.Empresa
         }
 
         [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Login(Cliente model)
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View("~/Views/Cliente/Create.cshtml");

@@ -1,4 +1,7 @@
 @model Cliente
+@{
+    Layout="~/Views/Shared/Layout.cshtml";
+}
 
 <form asp-asp-controller="cliente" asp-action="create" method="POST">
         <div class="form-group">
@@ -28,5 +31,6 @@
         </div>
 
     <button class="btn btn-primary">Criar</button>        
-        <a class="btn btn-danger" href="/Cliente">Cancelar</a>
+    <a class="btn btn-light" href="/">Voltar</a>
+    <a class="btn btn-link" href="/">Criar como Empresa</a>
 </form>

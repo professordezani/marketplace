@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using Marketplace.Models.Entidades;
 using Marketplace.Models.Repositories;
 using Marketplace.Models.Views;
@@ -9,17 +9,14 @@ namespace Marketplace.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        private readonly ICategoriaRepository _categoriaRepository;
-        public UsuarioController(IUsuarioRepository usuarioRepository, ICategoriaRepository categoriaRepository)
+        
+        public UsuarioController(IUsuarioRepository usuarioRepository)
         {
-            _usuarioRepository = usuarioRepository;
-            _categoriaRepository = categoriaRepository;
+            _usuarioRepository = usuarioRepository;            
         }        
 
         public IActionResult Index()
         {
-            /*var homeView = new HomeView();
-            homeView.Categorias = _categoriaRepository.Read();  */
             
             return View();
         }
@@ -27,19 +24,13 @@ namespace Marketplace.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            List<Categoria> categorias = _categoriaRepository.Read();
-
-            ViewBag.Title = "Novo Usuário";
-
-            var usuario = new Usuario();            
-
-            return View(usuario);
+             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Usuario usuario)
-        {
-            return View();
+        public IActionResult Create(Usuario model)
+        {         
+             return View();
         }
 
         [HttpGet]
