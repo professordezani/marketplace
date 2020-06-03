@@ -13,7 +13,7 @@
         @foreach (var produto in produtoGroup.Produtos)
         {
           <div class="col-md-2">  
-            <a href="">
+            <a href="/Home/Detail?id=@produto.Id">
               <div class="card">
                 <img class="card-img-top" src="@(produto.Imagem != null ? "data:image;base64," + Convert.ToBase64String(produto.Imagem) : "Images/NoImage.jpg")" width="150" height="150">             
                 <div class="card-body">
