@@ -9,9 +9,14 @@ namespace Marketplace.Repository
     {
         private readonly DataContext _dataContext;
 
+        public ClienteRepository(DataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
         public void Create(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _dataContext.Add(cliente);
+            _dataContext.SaveChanges();
         }
 
         public Cliente Read(Guid id)

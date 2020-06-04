@@ -4,13 +4,13 @@ namespace Marketplace.Models.Entidades
 {
    public class Cliente : Usuario
    {
-       [Required]
+       [Required(ErrorMessage="CPF é obrigatório")]
        [MaxLength(9)]
        [MinLength(9)]
        public string Cpf { get; set; }
        
-       [Required]
-       [MaxLength(100)]
+       [Required(ErrorMessage="Endereço é obrigatório")]
+       [MaxLength(200)]
        public string Endereco { get; set; }
 
    }

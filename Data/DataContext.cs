@@ -13,11 +13,11 @@ namespace Marketplace.Data {
 
        public DbSet<Produto> Produtos { get; set; }
        public DbSet<Usuario> Usuarios { get; set; }
+       public DbSet<Cliente> Cliente { get; set; }
 
        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
-            modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();     
-            modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();
        }
     }
 }
