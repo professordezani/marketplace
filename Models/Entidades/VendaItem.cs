@@ -6,12 +6,12 @@ namespace Marketplace.Models.Entidades
     public class VendaItem : EntidadeBase
     {
         [Required]
-        public Venda vendaId { get; set; }
+        public Venda VendaId { get; set; }
 
         [Required]
-        public Produto produtoId { get; set; }
+        public Produto ProdutoId { get; set; }
 
         [Required]
-        public decimal quantiade { get; set; }
+        public int Quantiade { get; set; }
     }
 }

@@ -1,24 +1,24 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Marketplace.Models.Entidades
 {
     public class Venda : EntidadeBase
     {
         [Required]
-        public DateTime dataVenda { get; set; }
+        public DateTime DataVenda { get; set; }
 
         [Required]
-        public Empresa empresaId { get; set; }
+        public Empresa EmpresaId { get; set; }
 
         [Required]
-        public Cliente clienteId { get; set; }
+        public Cliente ClienteId { get; set; }
 
         [Required]
-        public VendaItem vendaItemId { get; set; }
+        public List<VendaItem> VendaItemId { get; set; }
 
-        public int tipoPagamento { get; set; } //0 - Dinheiro ; 1 - Cartão de Crédito;
-
+        public Pagamento tpPagamento { get; set; }
 
     }
 }

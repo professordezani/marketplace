@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Marketplace.Controllers.Empresa
 {
-    public class VendaController : Controller
+    public class CarrinhoController : Controller
     {
         public IActionResult Index()
         {
-            ViewBag.Title = "Vendas";
-            return View("~/Views/Empresa/Venda/Venda.cshtml");
+            ViewBag.Title = "Carrinho";
+            return View("~/Views/Empresa/Venda/Carrinho.cshtml");
         }
 
     }
