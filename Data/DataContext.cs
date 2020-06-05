@@ -12,6 +12,8 @@ namespace Marketplace.Data {
        public DbSet<Empresa> Empresas { get; set; }
 
        public DbSet<Produto> Produtos { get; set; }
+       public DbSet<Usuario> Usuarios { get; set; }
+       public DbSet<Cliente> Cliente { get; set; }
 
        public DbSet<Venda> Vendas { get; set; }
 
@@ -19,7 +21,7 @@ namespace Marketplace.Data {
         
        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
-            modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();     
+            modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();
        }
     }
 }

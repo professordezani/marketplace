@@ -6,6 +6,8 @@ namespace Marketplace.Models.Views {
         public List<Categoria> Categorias { get; set; }
 
         public List<ProdutoGroup> ProdutosGroup { get; set; }
+
+        public Produto ProdutoDetail { get; set; }
     }
 
     public class ProdutoGroup {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Marketplace.Models.Repositories;
 using Marketplace.Models.Views;
 using System.Collections.Generic;
+using System;
 
 namespace Marketplace.Controllers
 {
@@ -33,6 +34,13 @@ namespace Marketplace.Controllers
                 }    
             }           
             return View(homeView);
+        }
+
+        public IActionResult Detail(Guid id){
+            var homeView = new HomeView();
+            homeView.Categorias = _categoriaRepository.Read();
+            homeView.ProdutoDetail = _produtoRepository.Read(id);
+            return View("~/Views/Home/Detail.cshtml", homeView);
         }
     }
 }

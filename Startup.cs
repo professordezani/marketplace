@@ -26,7 +26,9 @@ namespace Marketplace
             var connectionString = Configuration.GetConnectionString("ConnectionString");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();            
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddControllersWithViews();
         }
            
