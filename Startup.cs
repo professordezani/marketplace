@@ -8,6 +8,7 @@ using Marketplace.Data;
 using Microsoft.EntityFrameworkCore;
 using Marketplace.Repository;
 using Marketplace.Models.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Marketplace
 {
@@ -30,6 +31,12 @@ namespace Marketplace
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddControllersWithViews();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options => 
+                    {
+                        options.LoginPath = "/Cliente/Login";          
+                        options.Cookie.Name="BiscoitoDoVau";
+                    });
         }
            
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +50,11 @@ namespace Marketplace
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthorization();
+            app.UseAuthentication();
+
+            app.UseCookiePolicy();
 
             app.UseEndpoints(endpoints =>
             {

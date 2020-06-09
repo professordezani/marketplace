@@ -8,5 +8,7 @@ namespace Marketplace.Models.Repositories
         void Create(Cliente cliente);
         Cliente Read(Guid id);
         void Update(Cliente cliente);
+
+        bool Login(string email, string senha);        
     }
 }

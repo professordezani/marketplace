@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using Marketplace.Models.Entidades;
 using Marketplace.Models.Repositories;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,9 +32,48 @@ namespace Marketplace.Controllers.Empresa
         }
         
         [HttpPost]
-        public IActionResult Login(Cliente model)
+        public async Task<IActionResult> Login(Cliente model)
         {                        
-            return View();
+            var password = model.Senha;
+
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            password: password,
+            salt: salt,
+            prf: KeyDerivationPrf.HMACSHA1,
+            iterationCount: 10000,
+            numBytesRequested: 256 / 8));
+
+            model.Senha = hashed;      
+               
+            if(_clienteRepository.Login(model.Email, model.Senha))
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.Email)
+                };
+
+                var identity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var props = new AuthenticationProperties();
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,props).Wait();
+                return RedirectToAction("Index", "Cliente");
+            }
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index");
         }
 
 

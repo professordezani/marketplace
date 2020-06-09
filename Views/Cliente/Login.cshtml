@@ -3,7 +3,7 @@
     Layout="~/Views/Shared/Layout.cshtml";
 }
 
-<form asp-asp-controller="cliente" asp-action="create" method="POST">
+<form asp-asp-controller="cliente" asp-action="Login" method="POST">
         
         <div class="form-group">
             <label for="">E-mail</label>
@@ -16,6 +16,6 @@
             <span asp-validation-for="Senha"></span>
         </div>       
 
-    <button class="btn btn-primary">Criar</button>        
+    <button class="btn btn-primary">Entrar</button>        
     <a class="btn btn-light" href="/Cliente/Create">Nova Conta</a>        
 </form>
