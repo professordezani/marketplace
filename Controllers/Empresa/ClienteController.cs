@@ -7,6 +7,7 @@ using Marketplace.Models.Entidades;
 using Marketplace.Models.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@ namespace Marketplace.Controllers.Empresa
         {
             _clienteRepository = clienteRepository;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -50,7 +52,7 @@ namespace Marketplace.Controllers.Empresa
             numBytesRequested: 256 / 8));
 
             model.Senha = hashed;      
-               
+
             if(_clienteRepository.Login(model.Email, model.Senha))
             {
                 var claims = new List<Claim>
