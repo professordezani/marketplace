@@ -18,17 +18,7 @@ namespace Marketplace.Repository
         {
             _dataContext.Add(cliente);
             _dataContext.SaveChanges();
-        }
-
-        public bool Login(string email, string senha)
-        {
-            Cliente cliente =_dataContext.Cliente.Where(x => x.Email == email && x.Senha == senha).FirstOrDefault();
-
-            if (cliente == null)
-                return false;
-            else
-                return true;
-        }
+        }        
 
         public Cliente Read(Guid id)
         {

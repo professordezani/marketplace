@@ -20,56 +20,11 @@ namespace Marketplace.Controllers.Empresa
         public ClienteController(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
-        }
-        [Authorize]
+        }        
         public IActionResult Index()
         {
             return View();
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-        
-        [HttpPost]
-        public async Task<IActionResult> Login(Cliente model)
-        {                        
-            var password = model.Senha;
-
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-            password: password,
-            salt: salt,
-            prf: KeyDerivationPrf.HMACSHA1,
-            iterationCount: 10000,
-            numBytesRequested: 256 / 8));
-
-            model.Senha = hashed;      
-
-            if(_clienteRepository.Login(model.Email, model.Senha))
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, model.Email)
-                };
-
-                var identity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var principal = new ClaimsPrincipal(identity);
-                var props = new AuthenticationProperties();
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,props).Wait();
-                return RedirectToAction("Index", "Cliente");
-            }
-            else
-                return View();
-        }
+        }        
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -93,7 +48,7 @@ namespace Marketplace.Controllers.Empresa
 
             model.Id = Guid.NewGuid();
 
-            var password = model.Senha;
+            /*var password = model.Senha;
 
             byte[] salt = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
@@ -108,7 +63,7 @@ namespace Marketplace.Controllers.Empresa
             iterationCount: 10000,
             numBytesRequested: 256 / 8));
 
-            model.Senha = hashed;            
+            model.Senha = hashed;            */
 
             _clienteRepository.Create(model);
 
