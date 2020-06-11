@@ -2,9 +2,8 @@
 @{
     Layout="~/Views/Shared/Layout.cshtml";
 }
-
-<form asp-asp-controller="usuario" asp-action="Login" method="POST">
-        
+<div class="container">
+    <form asp-asp-controller="usuario" asp-action="Login" method="POST" class="mx-auto" style="width: 50%">        
         <div class="form-group">
             <label for="">E-mail</label>
             <input class="form-control" asp-for="Email">
@@ -14,8 +13,8 @@
             <label for="">Senha</label>
             <input type="password" class="form-control" asp-for="Senha">
             <span asp-validation-for="Senha"></span>
-        </div>       
-
-    <button class="btn btn-primary">Entrar</button>        
-    <a class="btn btn-light" href="/Cliente/Create">Nova Conta</a>        
-</form>
+        </div>      
+        <button class="btn btn-primary">Entrar</button>        
+        <a class="btn btn-light" href="/Cliente/Create">Cadastre-se</a>        
+    </form>
+</div>
