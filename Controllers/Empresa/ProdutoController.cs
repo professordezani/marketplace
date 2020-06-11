@@ -17,6 +17,7 @@ namespace Marketplace.Controllers.Empresa {
 
         public IActionResult Index()
         {
+            ViewBag.User = Request.Cookies["Nome"];
             ViewBag.Title = "Produtos";
             var produtos = _produtoRepository.Read();
             return View("~/Views/Empresa/Produto/Index.cshtml", produtos);

@@ -20,7 +20,7 @@ namespace Marketplace.Controllers.Empresa
         }   
 
         public IActionResult Index()
-        {
+        {            
             return View();
         }     
 
@@ -31,7 +31,7 @@ namespace Marketplace.Controllers.Empresa
         }
         
         [HttpPost]
-        public IActionResult Login(LoginView model)
+        public IActionResult Login(LoginView model)        
         {     
             if(! (model.Email != "" && model.Senha != ""))
                 return View(model);
@@ -54,8 +54,11 @@ namespace Marketplace.Controllers.Empresa
                 };
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,props).Wait();
 
+                Response.Cookies.Append("Id", usuario.Id.ToString());                
+                Response.Cookies.Append("Nome", usuario.Nome);
+
                 if(usuario is Cliente) {
-                    return View("~/Views/Cliente/Index.cshtml");
+                    return RedirectToAction("Index", "Cliente");
                 } else {
                     return RedirectToAction("Index", "Produto");
                 }                
@@ -63,6 +66,12 @@ namespace Marketplace.Controllers.Empresa
             else{
                return View(model);
             }                
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

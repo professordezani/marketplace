@@ -22,17 +22,10 @@ namespace Marketplace.Controllers.Empresa
             _clienteRepository = clienteRepository;
         }        
         public IActionResult Index()
-        {
+        {            
+            ViewBag.User = Request.Cookies["Nome"];   
             return View();
-        }        
-
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
-        }
-
+        } 
 
         [HttpGet]
         public IActionResult Create()
@@ -73,6 +66,7 @@ namespace Marketplace.Controllers.Empresa
         [HttpGet]
          public IActionResult Update()
         {
+            ViewBag.User = Request.Cookies["Nome"];   
             return View();
         }
         [HttpPost]
