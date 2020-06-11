@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using Marketplace.Models.Enums;
 
 namespace Marketplace.Models.Entidades
 {
@@ -10,15 +11,15 @@ namespace Marketplace.Models.Entidades
         public DateTime DataVenda { get; set; }
 
         [Required]
-        public Empresa EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
 
         [Required]
-        public Cliente ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
 
         [Required]
-        public List<VendaItem> VendaItemId { get; set; }
+        public List<VendaItem> Itens { get; set; }
 
-        public Pagamento tpPagamento { get; set; }
+        public FormaPagamento FormaPagamento { get; set; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace Marketplace.Controllers
             var homeView = new HomeView();
             homeView.Categorias = _categoriaRepository.Read();
             homeView.ProdutosGroup = new List<ProdutoGroup>();
-            var produtos = _produtoRepository.Read();
+            var produtos = _produtoRepository.ReadDisponivel();
             var produtoGroup = new ProdutoGroup();
             var contador = 0;
             foreach(var produto in produtos){

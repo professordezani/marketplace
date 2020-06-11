@@ -30,5 +30,24 @@ namespace Marketplace.Repository {
             _dataContext.Produtos.Update(produto);
             _dataContext.SaveChanges();
         }
+
+        public List<Produto> ReadDisponivel(){
+            var produtos = _dataContext.Produtos.Where(x => x.Indisponivel == false).ToList(); 
+            Shuffle(produtos);
+            return produtos;       
+        }
+
+        private void Shuffle(List<Produto> produtos)  
+        {  
+            var rng = new Random();  
+            int n = produtos.Count;  
+            while (n > 1) {  
+                n--;  
+                int k = rng.Next(n + 1);  
+                Produto value = produtos[k];  
+                produtos[k] = produtos[n];  
+                produtos[n] = value;  
+            }  
+        }
     }
 }
