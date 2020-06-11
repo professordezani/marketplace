@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Controllers.Empresa
+namespace Marketplace.Controllers
 {
     public class UsuarioController : Controller
     {

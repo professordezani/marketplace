@@ -1,7 +1,7 @@
 using Marketplace.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Controllers.Empresa
+namespace Marketplace.Controllers
 {
     public class VendaController : Controller
     {

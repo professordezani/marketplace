@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Marketplace.Models.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Controllers.Empresa
+namespace Marketplace.Controllers
 {
     public class FuncionarioController : Controller
     {

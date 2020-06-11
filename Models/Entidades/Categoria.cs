@@ -8,10 +8,5 @@ namespace Marketplace.Models.Entidades
         [Required]
         [MaxLength(50)]
         public string Descricao { get; set; }
-
-        public static implicit operator List<object>(Categoria v)
-        {
-            throw new NotImplementedException();
-        }
     }    
 }

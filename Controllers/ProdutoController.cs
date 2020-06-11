@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
-namespace Marketplace.Controllers.Empresa {
+namespace Marketplace.Controllers {
     public class ProdutoController : Controller {
 
         private readonly IProdutoRepository _produtoRepository;

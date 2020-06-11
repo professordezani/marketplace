@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Marketplace.Controllers.Empresa
+namespace Marketplace.Controllers
 {
     public class ClienteController : Controller
     {
