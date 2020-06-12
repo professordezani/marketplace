@@ -60,7 +60,7 @@ namespace Marketplace.Controllers
                 if(usuario is Cliente) {
                     return RedirectToAction("Index", "Cliente");
                 } else {
-                    return RedirectToAction("Index", "Produto");
+                    return RedirectToAction("Index", "Venda");
                 }                
             }
             else{

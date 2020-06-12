@@ -9,10 +9,10 @@ namespace Marketplace.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Funcionários";
+            ViewBag.User = Request.Cookies["Nome"];
             List<Funcionario> lista = new List<Funcionario>();   
             Funcionario funcionario = new Funcionario();
             lista.Add(funcionario);
-
             return View(lista);
         }      
         

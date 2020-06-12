@@ -8,7 +8,8 @@ namespace Marketplace.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Vendas";
-            return View("~/Views/Empresa/Venda/Venda.cshtml");
+            ViewBag.User = Request.Cookies["Nome"];
+            return View("~/Views/Empresa/Venda/Index.cshtml");
         }
 
     }

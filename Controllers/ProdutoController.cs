@@ -8,24 +8,28 @@ using System.IO;
 
 namespace Marketplace.Controllers {
     public class ProdutoController : Controller {
-
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IFuncionarioRepository _funcionarioRepository;
 
-        public ProdutoController(IProdutoRepository produtoRepository) {
+        public ProdutoController(IProdutoRepository produtoRepository, IFuncionarioRepository funcionarioRepository) {
           _produtoRepository = produtoRepository;
+          _funcionarioRepository = funcionarioRepository;
         }
 
         public IActionResult Index()
-        {
-            ViewBag.User = Request.Cookies["Nome"];
+        {            
             ViewBag.Title = "Produtos";
-            var produtos = _produtoRepository.Read();
+            ViewBag.User = Request.Cookies["Nome"];
+            var id = new Guid(Request.Cookies["Id"]);
+            var funcionario = _funcionarioRepository.Read(id);
+            var produtos = _produtoRepository.ReadByEmpresa(funcionario.Empresa.Id);
             return View("~/Views/Empresa/Produto/Index.cshtml", produtos);
         }
 
         public IActionResult Save(Guid? id)
         {
            ViewBag.Title = "Produto";
+           ViewBag.User = Request.Cookies["Nome"];
            var produto = new Produto();
            if(id.HasValue){
              produto =_produtoRepository.Read((Guid)id);
@@ -49,6 +53,10 @@ namespace Marketplace.Controllers {
                   }
                }
             }
+
+            var id = new Guid(Request.Cookies["Id"]);
+            var funcionario = _funcionarioRepository.Read(id);
+            produto.Empresa = funcionario.Empresa;
             
             if(produto.Id == Guid.Empty){
               _produtoRepository.Create(produto);

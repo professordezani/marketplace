@@ -18,8 +18,8 @@ namespace Marketplace.Repository {
           _dataContext.SaveChanges();
         }
 
-        public List<Produto> Read(){
-            return _dataContext.Produtos.OrderBy(x => x.Titulo).ToList();
+        public List<Produto> ReadByEmpresa(Guid id){
+            return _dataContext.Produtos.Where(x => x.Empresa.Id == id).OrderBy(x => x.Titulo).ToList();
         }
 
         public Produto Read(Guid id){

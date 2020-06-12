@@ -31,7 +31,14 @@
         </li>
       </ul>
     </div>
-    <a class="btn btn-light" href="/Funcionario/index" role="button">@ViewBag.User</a>
+    <div class="dropdown">
+      <button class="btn btn-light" type="button" id="logout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         @ViewBag.User
+      </button>
+      <div class="dropdown-menu" aria-labelledby="logout">
+          <a class="dropdown-item" href="/Usuario/Logout">Sair</a>
+      </div>
+    </div>
   </nav>
   @RenderBody()
 </body>
