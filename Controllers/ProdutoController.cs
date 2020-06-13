@@ -40,6 +40,8 @@ namespace Marketplace.Controllers {
         [HttpPost]
         public IActionResult Save(Produto produto, List<IFormFile> files){
             if(!ModelState.IsValid) {
+               ViewBag.Title = "Produto";
+               ViewBag.User = Request.Cookies["Nome"];
                return View("~/Views/Empresa/Produto/Save.cshtml", produto);
             }            
             foreach (var file in files)
