@@ -16,24 +16,31 @@ namespace Marketplace.Repository
             _dataContext = dataContext;
         }
 
-        public void Create(Funcionario funcionario)
-        {
-            throw new NotImplementedException();
+        public void Create(Funcionario funcionario) {
+            _dataContext.Add(funcionario);
+            _dataContext.SaveChanges();
         }
-
-        public List<Funcionario> Read(Empresa empresa)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Funcionario Read(Guid id)
         {
             return _dataContext.Funcionarios.Include(x => x.Empresa).Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void Update()
+        public List<Funcionario> ReadByEmpresa(Guid id)
         {
-            throw new NotImplementedException();
+            return _dataContext.Funcionarios.Where(x => x.Empresa.Id == id && x.Principal == false).OrderBy(x => x.Nome).ToList();
+        }
+
+        public void Update(Funcionario funcionario)
+        {
+           _dataContext.Funcionarios.Update(funcionario);
+           _dataContext.SaveChanges();
+        }
+
+        public void Delete(Guid id){
+            var funcionario = Read(id);
+            _dataContext.Funcionarios.Remove(funcionario);
+            _dataContext.SaveChanges();
         }
    }
 }

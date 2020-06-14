@@ -1,0 +1,57 @@
+@model List<Funcionario>
+@{
+  Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+}
+<div class="container-fluid">
+  <nav class="nav justify-content-end toolbar">
+    <a class="btn btn-primary" href="/Funcionario/Save" role="button">Novo</a>
+  </nav>   
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(var funcionario in Model)
+        {
+          <tr>               
+            <td style="width: 47%">@funcionario.Nome</td>
+            <td style="width: 40%">@funcionario.Email</td>
+            <td style="width: 13%">
+                <a class="btn btn-success" href="/Funcionario/Save?id=@funcionario.Id">Editar</a>
+                <button class="btn btn-danger" onclick="openModal('@funcionario.Id')">Excluir</button>                
+            </td>    
+          </tr>  
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="modalConfirm" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Deseja excluir esse funcionário?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-success" onclick="excluir()">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function openModal(id){
+      window.idSelecionado = id;
+      $('#modalConfirm').modal('show');
+    }
+    function excluir(){
+       window.location.href="/Funcionario/Delete?id=" + window.idSelecionado;
+    }
+</script>

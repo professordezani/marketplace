@@ -7,9 +7,9 @@ namespace Marketplace.Models.Repositories
     public interface IFuncionarioRepository
     {
         void Create(Funcionario funcionario);
-        List<Funcionario> Read(Empresa empresa);
         Funcionario Read(Guid id);
-        void Update();
-
+        List<Funcionario> ReadByEmpresa(Guid id);
+        void Update(Funcionario funcionario);
+        void Delete(Guid id);
     }
 }
