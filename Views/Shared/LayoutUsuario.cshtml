@@ -23,8 +23,8 @@
       <ul class="navbar-nav">
         @foreach (var categoria in Model.Categorias)
         {
-          <li class="nav-item">
-            <a class="nav-link" href="/">@categoria.Descricao</a>
+          <li class='@(ViewBag.Title == @categoria.Descricao ? "nav-item active" : "nav-item")'>
+            <a class="nav-link" href="/Home/Index?id=@categoria.Id">@categoria.Descricao</a>
           </li>
         }
       </ul>
