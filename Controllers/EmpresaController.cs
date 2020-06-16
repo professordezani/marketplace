@@ -35,7 +35,6 @@ namespace Marketplace.Controllers {
 
             var funcionario = new Funcionario {
                 Id = new Guid(),   
-                Ativo = true,
                 Principal = true,                  
                 Empresa = empresa,              
                 Email = cadastroEmpresaView.Email,

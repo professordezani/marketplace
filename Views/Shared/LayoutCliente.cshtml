@@ -18,9 +18,22 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>     
-    <a class="btn btn-light" href="/Cliente/Update" role="button">@ViewBag.User</a>   
-    <a class="btn btn-light" href="/Usuario/Logout" role="button">Sair</a>   
-
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class='@(ViewBag.Title == "Carrinho" ? "nav-item active" : "nav-item")'>
+          <a class="nav-link" href="/Venda">Carrinho</a>
+        </li>        
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-light" type="button" id="logout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         @ViewBag.User
+      </button>      
+      <div class="dropdown-menu" aria-labelledby="update">
+          <a class="dropdown-item" href="/Cliente/Update">Usuario</a>     
+          <a class="dropdown-item" href="/Usuario/Logout">Sair</a>
+      </div>
+    </div>
   </nav>
   @RenderBody()
 </body>

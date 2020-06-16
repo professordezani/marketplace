@@ -31,8 +31,13 @@ namespace Marketplace.Repository {
             _dataContext.SaveChanges();
         }
 
-        public List<Produto> ReadDisponivel(){
-            var produtos = _dataContext.Produtos.Where(x => x.Indisponivel == false).ToList(); 
+        public List<Produto> ReadDisponivel(Guid? id){
+            var produtos = new List<Produto>();
+            if (id.HasValue){
+               produtos = _dataContext.Produtos.Where(x => x.Indisponivel == false && x.Empresa.Categoria.Id == id).ToList(); 
+            } else {
+               produtos = _dataContext.Produtos.Where(x => x.Indisponivel == false).ToList(); 
+            }            
             Shuffle(produtos);
             return produtos;       
         }

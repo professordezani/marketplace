@@ -67,12 +67,14 @@ namespace Marketplace.Controllers
          public IActionResult Update()
         {
             ViewBag.User = Request.Cookies["Nome"];   
-            return View();
+            var cliente = _clienteRepository.Read(new Guid(Request.Cookies["Id"]));
+            return View(cliente);
         }
         [HttpPost]
         public IActionResult Update(Cliente cliente)
         {
-            return View();
+            _clienteRepository.Update(cliente);
+            return RedirectToAction("Index");
         }
     }
 }

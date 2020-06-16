@@ -22,12 +22,13 @@ namespace Marketplace.Repository
 
         public Cliente Read(Guid id)
         {
-            throw new NotImplementedException();
+            return (Cliente)_dataContext.Usuarios.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void Update(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _dataContext.Update(cliente);
+            _dataContext.SaveChanges();
         }       
     }
 }

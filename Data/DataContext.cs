@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Marketplace.Models.Entidades;
+using System.Collections.Generic;
 
 namespace Marketplace.Data {
     public class DataContext : DbContext {
@@ -21,9 +22,9 @@ namespace Marketplace.Data {
 
        public DbSet<Venda> Vendas { get; set; }
 
-       public DbSet<VendaItem> VendaItens { get; set; }
-        
-       protected override void OnModelCreating(ModelBuilder modelBuilder)
+       public DbSet<VendaItem> VendaItens { get; set; }        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
             modelBuilder.Entity<Empresa>().HasIndex(p => p.Cnpj).IsUnique();
        }

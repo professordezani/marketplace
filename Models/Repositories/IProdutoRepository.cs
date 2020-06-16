@@ -9,6 +9,6 @@ namespace Marketplace.Models.Repositories{
         List<Produto> ReadByEmpresa(Guid id);
         Produto Read(Guid id);
         void Update(Produto produto);
-        List<Produto> ReadDisponivel();
+        List<Produto> ReadDisponivel(Guid? id);
     }
 }

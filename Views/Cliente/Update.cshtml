@@ -3,7 +3,7 @@
     Layout="~/Views/Shared/LayoutCliente.cshtml";
 }
 <div class="container">
-    <form asp-asp-controller="cliente" asp-action="create" method="POST">
+    <form asp-asp-controller="Cliente" asp-action="Update" method="POST">
             <div class="form-group">
                 <label for="">Nome</label>
                 <input class="form-control" asp-for="Nome">
@@ -13,12 +13,7 @@
                 <label for="">E-mail</label>
                 <input class="form-control" asp-for="Email">
                 <span asp-validation-for="Email"></span>
-            </div>
-            <div class="form-group">
-                <label for="">Senha</label>
-                <input type="password" class="form-control" asp-for="Senha">
-                <span asp-validation-for="Senha"></span>
-            </div>
+            </div>            
             <div class="form-group">
                 <label for="">Cpf</label>
                 <input class="form-control" asp-for="Cpf">
@@ -29,7 +24,11 @@
                 <input class="form-control" asp-for="Endereco">
                 <span asp-validation-for="Endereco"></span>
             </div>
-
+            <div style="display: none;" class="form-group">
+                <label for="">Senha</label>
+                <input type="text" class="form-control" asp-for="Senha">
+                <span asp-validation-for="Senha"></span>
+            </div>
         <button class="btn btn-primary">Salvar</button>        
         <a class="btn btn-light" href="/Cliente">Voltar</a>
     </form>
