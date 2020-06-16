@@ -1,3 +1,74 @@
+@model CarrinhoView
 @{
-  Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
 }
+<form asp-controller="Venda" asp-action="FinalizaVenda" method="post">
+<table cellspacing="0" class="table table-striped">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>Produto</th>
+      <th>Preço</th>
+      <th>Quantidade</th>
+      <th>Forma de Pagamento</th>
+      <th>Total</th>
+    </tr>
+  </thead>    
+      <tbody>
+        @* <input type="hidden" asp-for="Id" /> *@
+      @foreach (var produto in Model.ProdutosCart)
+      {
+      <tr>
+        <td>
+          <a title="Remover esse item do carrinho" class="remove" href="#">×</a>
+        </td>
+
+        <td>
+          <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@(produto.Imagem != null ? "data:image;base64," + Convert.ToBase64String(produto.Imagem) : "../../Images/NoImage.jpg" )">
+            
+        </td>
+
+        <td>
+          <a href="single-product.html">@produto.Titulo</a>
+        </td>
+
+        <td>
+          <span class="amount">@produto.Valor</span>
+        </td>    
+
+        <td>
+          <div>
+            <input type="number" value="@Model.quantidade" size="4" value="1" min="1" step="1">
+          </div>
+        </td>
+
+        <td>
+           <select class="custom-select" >
+              <option selected>Cartão de Crédito</option>
+              <option value="1">Dinheiro</option>              
+            </select>
+        </td>
+
+        <td>
+          <span class="amount">@produto.Valor</span>
+        </td>
+      </tr>
+      }
+  </tbody>
+</table>
+<div class="float-right">
+  <div class="row ">
+    <div class="col-md ">
+      <h4>Valor Total R$: @Model.valorTotal</h4>
+      <input type="hidden" asp-for="valorTotal" />
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-md">
+      <button class="btn btn-primary">Comprar</button>
+    </div>
+  </div>
+</div>
+</form>

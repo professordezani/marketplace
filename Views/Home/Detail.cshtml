@@ -2,6 +2,7 @@
 @{
   Layout = "~/Views/Shared/LayoutUsuario.cshtml";
 }
+
 <div class="container">
     <div class="card w-100" style="border: none; margin: 15px 0 0 150px;">
         <div class="row">
@@ -15,8 +16,8 @@
             </div>      
             <div class="col-md-4">
                 <h3 class="font-weight-normal">R$ @Model.ProdutoDetail.Valor</h3>
-            </div>       
-         </div>   
+            </div>                   
+         </div>
          <div class="row">
             <div class="col-md">
                 <blockquote class="blockquote">
@@ -24,6 +25,11 @@
                     </blockquote>
                 </div>             
             </div>
+            <div class="row">
+                <div class="col-md">
+                    <a type="button" class="btn btn-primary" href="/Venda/Adicionar?id=@Model.ProdutoDetail.Id">Ir para Pagamento</a>
+                </div>
+             </div>
          </div>       
     </div>     
 </div>

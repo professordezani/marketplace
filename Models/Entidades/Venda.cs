@@ -21,5 +21,7 @@ namespace Marketplace.Models.Entidades
 
         public FormaPagamento FormaPagamento { get; set; }
 
+        public Decimal valorTotalVenda { get; set; }
+
     }
 }

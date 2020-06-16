@@ -1,3 +1,15 @@
+@model Venda;
 @{
-  Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
 }
+
+<form asp-controller="FinalizaVenda" asp-action="Save" method="post" enctype="multipart/form-data">
+
+  <p>Forma de Pagamento</p>
+
+  <p>Endereço de Entrega</p>
+
+  <p>Totais</p>
+
+  <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+</form>

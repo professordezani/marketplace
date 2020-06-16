@@ -32,6 +32,7 @@ namespace Marketplace
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+            services.AddScoped<IVendaRepository, VendaRepository>();
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options => 

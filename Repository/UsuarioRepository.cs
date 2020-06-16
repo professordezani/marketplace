@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Marketplace.Data;
 using Marketplace.Models.Entidades;
@@ -16,6 +17,11 @@ namespace Marketplace.Repository
         public Usuario Login(string email, string senha)
         {
             return _dataContext.Usuarios.Where(x => x.Email == email && x.Senha == senha).FirstOrDefault();
+        }
+
+        public Usuario Read(Guid id)
+        {
+             return _dataContext.Usuarios.Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }
