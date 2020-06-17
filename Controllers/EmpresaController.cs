@@ -3,6 +3,7 @@ using Marketplace.Models.Views;
 using Microsoft.AspNetCore.Mvc;
 using Marketplace.Models.Entidades;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Marketplace.Controllers {
     public class EmpresaController : Controller {
@@ -23,13 +24,18 @@ namespace Marketplace.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Create(CadastroEmpresaView cadastroEmpresaView){
+        public IActionResult Create(CadastroEmpresaView cadastroEmpresaView){            
+            if (!ModelState.IsValid){
+                ViewBag.Title = "Empresa";
+                cadastroEmpresaView.Categorias = _categoriaRepository.Read();
+                return View("~/Views/Usuario/CadastroEmpresa.cshtml", cadastroEmpresaView);
+            }            
 
             var empresa = new Empresa {
                Id = new Guid(),
                RazaoSocial = cadastroEmpresaView.RazaoSocial,
                NomeFantasia = cadastroEmpresaView.NomeFantasia,
-               Cnpj = cadastroEmpresaView.Cnpj,
+               Cnpj = Regex.Replace(cadastroEmpresaView.Cnpj, @"(\D)", ""),
                Categoria = _categoriaRepository.Read(cadastroEmpresaView.Categoria)
             };
 
@@ -44,7 +50,7 @@ namespace Marketplace.Controllers {
 
             _empresaRepository.Create(empresa, funcionario); 
 
-            return View("~");           
+            return RedirectToAction("Login", "Usuario");        
         }
     }    
 }
