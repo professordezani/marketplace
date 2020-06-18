@@ -1,0 +1,63 @@
+@model Venda;
+@{
+  Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="container">
+   <form asp-controller="Home" asp-action="FinalizarCompra" method="POST">
+        <input type="hidden" asp-for="Produto.Id" />
+
+        <table cellspacing="0" class="table table-striped">
+  <thead>
+    <tr>      
+      <th>&nbsp;</th>
+      <th>Produto</th>
+      <th>Preço</th>      
+      <th>Forma de Pagamento</th>
+      <th>Total</th>
+    </tr>
+  </thead>    
+      <tbody>      
+      <tr>      
+
+        <td>
+          <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@(Model.Produto.Imagem != null ? "data:image;base64," + Convert.ToBase64String(Model.Produto.Imagem) : "../../Images/NoImage.jpg" )">
+            
+        </td>
+
+        <td>
+          <a href="single-product.html">@Model.Produto.Titulo</a>
+        </td>
+
+        <td>
+          <span class="amount">@Model.Produto.Valor</span>
+        </td> 
+
+        <td>
+           <select class="custom-select">
+              <option value="0" selected>Cartão de Crédito</option>
+              <option value="1">Dinheiro</option>              
+            </select>
+        </td>
+
+        <td>
+          <span class="amount">@Model.Produto.Valor</span>
+        </td>
+      </tr>      
+  </tbody>
+</table>
+<div class="float-right">
+  <div class="row ">
+    <div class="col-md ">
+      <h4>Valor Total R$: @Model.Produto.Valor</h4>      
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-md">
+       <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+  </div>
+</div>
+       
+    </form>   
+</div>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Marketplace.Models.Entidades;
 
 namespace Marketplace.Models.Repositories
@@ -7,6 +8,8 @@ namespace Marketplace.Models.Repositories
     {
         void Create(Venda venda);
         Venda Read(Guid id);
-        void Update(Venda venda);          
+        List<Venda> ReadByEmpresa();
+        List<Venda> ReadByCliente(Guid id);
+        void Update(Venda venda);
     }
 }

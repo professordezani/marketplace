@@ -20,9 +20,7 @@ namespace Marketplace.Data {
 
        public DbSet<Usuario> Usuarios { get; set; }
 
-       public DbSet<Venda> Vendas { get; set; }
-
-       public DbSet<VendaItem> VendaItens { get; set; }        
+       public DbSet<Venda> Vendas { get; set; }   
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
        {

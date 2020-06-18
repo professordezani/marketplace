@@ -4,6 +4,7 @@ using Marketplace.Models.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.Repository {
     public class ProdutoRepository : IProdutoRepository {
@@ -19,11 +20,11 @@ namespace Marketplace.Repository {
         }
 
         public List<Produto> ReadByEmpresa(Guid id){
-            return _dataContext.Produtos.Where(x => x.Empresa.Id == id).OrderBy(x => x.Titulo).ToList();
+            return _dataContext.Produtos.ToList();
         }
 
         public Produto Read(Guid id){
-            return _dataContext.Produtos.Where(x => x.Id == id).FirstOrDefault();
+            return _dataContext.Produtos.Include(x => x.Empresa).Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void Update(Produto produto){

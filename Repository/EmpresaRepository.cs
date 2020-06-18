@@ -1,6 +1,8 @@
 using Marketplace.Data;
 using Marketplace.Models.Repositories;
 using Marketplace.Models.Entidades;
+using System;
+using System.Linq;
 
 namespace Marketplace.Repository {
     public class EmpresaRepository : IEmpresaRepository{

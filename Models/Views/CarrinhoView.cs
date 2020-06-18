@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Marketplace.Models.Entidades;
-using Marketplace.Models.Enums;
 
 namespace Marketplace.Models.Views
 {
@@ -12,7 +11,7 @@ namespace Marketplace.Models.Views
       
       public Decimal valorTotal { get; set; }
 
-      public FormaPagamento FormaPagamento { get; set; }
+      // public FormaPagamento FormaPagamento { get; set; }
 
       public int quantidade { get; set; }
 
